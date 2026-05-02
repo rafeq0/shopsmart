@@ -7,8 +7,22 @@
   <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
+  <header class="site-header">
+    <h1>ShopSmart</h1>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="register.html">Register</a>
+      <a href="products.html">Products</a>
+      <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+    </nav>
+  </header>
   <main class="container">
-    <h1>Cart</h1>
+    <div class="card">
+      <h2>Your Cart</h2>
+      <p>Total Items: <strong id="total-items">0</strong></p>
+      <ul id="cart-items"></ul>
+    </div>
   </main>
+  <script src="../js/app.js"></script>
 </body>
 </html>
