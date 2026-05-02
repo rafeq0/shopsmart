@@ -14,6 +14,14 @@ function saveCart(cart) {
   localStorage.setItem(APP_STORAGE_KEY, JSON.stringify(cart));
 }
 
+function updateCartCount() {
+  const countElements = document.querySelectorAll("#cart-count");
+  const cart = loadCart();
+  countElements.forEach((el) => {
+    el.textContent = String(cart.length);
+  });
+}
+
 function setupRegistration() {
   const form = document.getElementById("register-form");
   const message = document.getElementById("register-message");
@@ -39,6 +47,15 @@ function setupRegistration() {
   });
 }
 
+function addToCart(productId) {
+  const selected = PRODUCTS.find((product) => product.id === productId);
+  if (!selected) return;
+  const cart = loadCart();
+  cart.push(selected);
+  saveCart(cart);
+  updateCartCount();
+}
+
 function setupProductCatalog() {
   const list = document.getElementById("product-list");
   if (!list) return;
@@ -48,9 +65,36 @@ function setupProductCatalog() {
       <div class="placeholder-image">Image Placeholder</div>
       <h3 class="product-name">${product.name}</h3>
       <p class="product-price">$${product.price.toFixed(2)}</p>
+      <button class="btn add-to-cart" data-id="${product.id}">Add to Cart</button>
     </article>
   `).join("");
+
+  list.querySelectorAll(".add-to-cart").forEach((button) => {
+    button.addEventListener("click", () => {
+      addToCart(Number(button.getAttribute("data-id")));
+    });
+  });
+}
+
+function setupCartPage() {
+  const itemsContainer = document.getElementById("cart-items");
+  const totalItems = document.getElementById("total-items");
+  if (!itemsContainer || !totalItems) return;
+
+  const cart = loadCart();
+  totalItems.textContent = String(cart.length);
+
+  if (!cart.length) {
+    itemsContainer.innerHTML = "<li>Your cart is empty.</li>";
+    return;
+  }
+
+  itemsContainer.innerHTML = cart
+    .map((item) => `<li>${item.name} - $${item.price.toFixed(2)}</li>`)
+    .join("");
 }
 
 setupRegistration();
 setupProductCatalog();
+setupCartPage();
+updateCartCount();
