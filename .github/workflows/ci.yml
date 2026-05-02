@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop, feature/**]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  static-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Basic file check
+        run: |
+          test -f index.html
+          test -f css/style.css
+          test -f js/app.js
+          test -f pages/register.html
+          test -f pages/products.html
+          test -f pages/cart.html
