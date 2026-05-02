@@ -57,3 +57,8 @@ A basic GitHub Actions workflow is included at `.github/workflows/ci.yml` to val
 - Registration page: `docs/screenshots/register.png`
 - Products page: `docs/screenshots/products.png`
 - Cart page: `docs/screenshots/cart.png`
+
+## Sprint Closure Artifacts
+- docs/sprint-summary.md
+- docs/retrospective.md
+
