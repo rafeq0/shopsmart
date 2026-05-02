@@ -76,7 +76,13 @@ function setupProductCatalog() {
   });
 }
 
-function clearCart() {`r`n  saveCart([]);`r`n  updateCartCount();`r`n  setupCartPage();`r`n}`r`n`r`nfunction setupCartPage() {
+function clearCart() {
+  saveCart([]);
+  updateCartCount();
+  setupCartPage();
+}
+
+function setupCartPage() {
   const itemsContainer = document.getElementById("cart-items");
   const totalItems = document.getElementById("total-items");
   if (!itemsContainer || !totalItems) return;
@@ -86,14 +92,19 @@ function clearCart() {`r`n  saveCart([]);`r`n  updateCartCount();`r`n  setupCart
 
   if (!cart.length) {
     itemsContainer.innerHTML = "<li>Your cart is empty.</li>";
-    return;
+  } else {
+    itemsContainer.innerHTML = cart
+      .map((item) => `<li>${item.name} - $${item.price.toFixed(2)}</li>`)
+      .join("");
   }
 
-  itemsContainer.innerHTML = cart`r`n    .map((item) => `<li>${item.name} - ${item.price.toFixed(2)}</li>`)`r`n    .join("");`r`n`r`n  const clearBtn = document.getElementById("clear-cart");`r`n  if (clearBtn) {`r`n    clearBtn.onclick = clearCart;`r`n  }
+  const clearBtn = document.getElementById("clear-cart");
+  if (clearBtn) {
+    clearBtn.onclick = clearCart;
+  }
 }
 
 setupRegistration();
 setupProductCatalog();
 setupCartPage();
 updateCartCount();
-
