@@ -1,4 +1,10 @@
 const APP_STORAGE_KEY = "shopsmart_cart";
+const PRODUCTS = [
+  { id: 1, name: "Wireless Headphones", price: 59.99 },
+  { id: 2, name: "Smart Watch", price: 89.99 },
+  { id: 3, name: "Bluetooth Speaker", price: 39.99 },
+  { id: 4, name: "Portable Charger", price: 24.99 }
+];
 
 function loadCart() {
   return JSON.parse(localStorage.getItem(APP_STORAGE_KEY) || "[]");
@@ -33,4 +39,18 @@ function setupRegistration() {
   });
 }
 
+function setupProductCatalog() {
+  const list = document.getElementById("product-list");
+  if (!list) return;
+
+  list.innerHTML = PRODUCTS.map((product) => `
+    <article class="card">
+      <div class="placeholder-image">Image Placeholder</div>
+      <h3 class="product-name">${product.name}</h3>
+      <p class="product-price">$${product.price.toFixed(2)}</p>
+    </article>
+  `).join("");
+}
+
 setupRegistration();
+setupProductCatalog();
