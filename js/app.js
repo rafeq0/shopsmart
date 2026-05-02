@@ -76,7 +76,7 @@ function setupProductCatalog() {
   });
 }
 
-function setupCartPage() {
+function clearCart() {`r`n  saveCart([]);`r`n  updateCartCount();`r`n  setupCartPage();`r`n}`r`n`r`nfunction setupCartPage() {
   const itemsContainer = document.getElementById("cart-items");
   const totalItems = document.getElementById("total-items");
   if (!itemsContainer || !totalItems) return;
@@ -89,12 +89,11 @@ function setupCartPage() {
     return;
   }
 
-  itemsContainer.innerHTML = cart
-    .map((item) => `<li>${item.name} - $${item.price.toFixed(2)}</li>`)
-    .join("");
+  itemsContainer.innerHTML = cart`r`n    .map((item) => `<li>${item.name} - ${item.price.toFixed(2)}</li>`)`r`n    .join("");`r`n`r`n  const clearBtn = document.getElementById("clear-cart");`r`n  if (clearBtn) {`r`n    clearBtn.onclick = clearCart;`r`n  }
 }
 
 setupRegistration();
 setupProductCatalog();
 setupCartPage();
 updateCartCount();
+
