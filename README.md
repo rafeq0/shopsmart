@@ -62,3 +62,8 @@ A basic GitHub Actions workflow is included at `.github/workflows/ci.yml` to val
 - docs/sprint-summary.md
 - docs/retrospective.md
 
+
+## Compliance Checklist
+- docs/compliance-checklist.md
+- .github/pull_request_template.md
+
