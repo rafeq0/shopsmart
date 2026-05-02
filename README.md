@@ -8,18 +8,21 @@ Deliver a simple but complete static shopping flow with:
 - product browsing
 - basic cart interactions
 
-## User Stories
-- `SS-1`: User Registration
-- `SS-2`: Product Browsing
-- `SS-3`: Shopping Cart
+## User Stories (Jira)
+- `SS-3`: User Registration  
+  Jira: https://rafeqabas.atlassian.net/browse/SS-3
+- `SS-4`: Product Browsing  
+  Jira: https://rafeqabas.atlassian.net/browse/SS-4
+- `SS-5`: Shopping Cart  
+  Jira: https://rafeqabas.atlassian.net/browse/SS-5
 
 ## Branching Strategy
 This repository follows a Scrum-friendly Git model:
 - `main`: production-ready branch
 - `develop`: integration branch for sprint work
-- `feature/SS-1-register`
-- `feature/SS-2-catalog`
-- `feature/SS-3-cart`
+- `feature/SS-1-register` (implements Jira `SS-3`)
+- `feature/SS-2-catalog` (implements Jira `SS-4`)
+- `feature/SS-3-cart` (implements Jira `SS-5`)
 
 ## Project Structure
 ```text
@@ -42,9 +45,9 @@ shopsmart/
 3. Navigate between `Register`, `Products`, and `Cart` pages.
 
 ## Sprint Implementation Notes
-- `SS-1`: Registration form with required-field validation and confirmation message.
-- `SS-2`: Static product catalog rendered as responsive product cards.
-- `SS-3`: Add-to-cart behavior using `localStorage`, with cart item count and cart page display.
+- `SS-3`: Registration form with required-field validation and confirmation message.
+- `SS-4`: Static product catalog rendered as responsive product cards.
+- `SS-5`: Add-to-cart behavior using `localStorage`, with cart item count and cart page display.
 
 ## CI
 A basic GitHub Actions workflow is included at `.github/workflows/ci.yml` to validate required static files on pushes and pull requests.
