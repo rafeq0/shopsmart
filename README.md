@@ -16,6 +16,15 @@ Deliver a simple but complete static shopping flow with:
 - `SS-5`: Shopping Cart  
   Jira: https://rafeqabas.atlassian.net/browse/SS-5
 
+## User Stories (Sprint Backlog)
+
+| Story ID | As a... | I want to... | so that... |
+| --- | --- | --- | --- |
+| SS-1 | new customer | register with name and email | I can create a shopping account |
+| SS-2 | registered customer | browse products as cards | I can see available items |
+| SS-3 | customer | add products to cart and see count update | I can review my selection before checkout |
+
+📝 **Detailed acceptance criteria:** See [docs/user-stories.md](docs/user-stories.md)
 ## Branching Strategy
 This repository follows a Scrum-friendly Git model:
 - `main`: production-ready branch
