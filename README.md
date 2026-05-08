@@ -86,3 +86,4 @@ This project now uses a real CI pipeline with Jest tests.
 npm install
 npm test
 ```
+CI verification update: trigger workflow check.
