@@ -1,0 +1,27 @@
+{
+  "name": "shopsmart",
+  "version": "1.0.0",
+  "description": "ShopSmart is a frontend-only mini e-commerce project built to simulate a Scrum sprint workflow using Git and GitHub practices.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafeq0/shopsmart.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rafeq0/shopsmart/issues"
+  },
+  "homepage": "https://github.com/rafeq0/shopsmart#readme",
+  "devDependencies": {
+    "jest": "^30.4.1"
+  }
+}

@@ -6,6 +6,16 @@ const PRODUCTS = [
   { id: 4, name: "Portable Charger", price: 24.99 }
 ];
 
+const validation =
+  (typeof window !== "undefined" && window.ShopSmartValidation) || {
+    isNonEmptyValue(value) {
+      return String(value || "").trim() !== "";
+    },
+    isValidPositivePrice(value) {
+      return typeof value === "number" && Number.isFinite(value) && value > 0;
+    }
+  };
+
 function loadCart() {
   return JSON.parse(localStorage.getItem(APP_STORAGE_KEY) || "[]");
 }
@@ -35,7 +45,11 @@ function setupRegistration() {
     const email = document.getElementById("email")?.value.trim();
     const password = document.getElementById("password")?.value.trim();
 
-    if (!name || !email || !password) {
+    if (
+      !validation.isNonEmptyValue(name) ||
+      !validation.isNonEmptyValue(email) ||
+      !validation.isNonEmptyValue(password)
+    ) {
       message.textContent = "Please fill in all required fields.";
       message.style.color = "#b91c1c";
       return;
@@ -49,7 +63,8 @@ function setupRegistration() {
 
 function addToCart(productId) {
   const selected = PRODUCTS.find((product) => product.id === productId);
-  if (!selected) return;
+  if (!selected || !validation.isValidPositivePrice(selected.price)) return;
+
   const cart = loadCart();
   cart.push(selected);
   saveCart(cart);
