@@ -76,3 +76,22 @@ A basic GitHub Actions workflow is included at `.github/workflows/ci.yml` to val
 - docs/compliance-checklist.md
 - .github/pull_request_template.md
 
+
+## CI & Testing Upgrade
+This project now uses a real CI pipeline with Jest tests.
+
+### Added
+- `test/validation.test.js` with validation test cases.
+- `js/validation.js` for reusable validation logic.
+- `.github/workflows/test.yml` to run:
+  1. Checkout code
+  2. Setup Node.js 20
+  3. `npm install`
+  4. `npm test`
+- `.gitignore` including `node_modules/` and `coverage/`.
+
+### Run locally
+```bash
+npm install
+npm test
+```
